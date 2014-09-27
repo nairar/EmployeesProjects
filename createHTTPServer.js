@@ -3,7 +3,8 @@ var express = require('express');
 var app = express();
 
 app.set('ipaddress', process.env.OPENSHIFT_NODEJS_IP);
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3000);
+
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3040);
 
 app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -40,7 +41,7 @@ app.get("/employees/:index/projects", function(req, res) {
 });
 
 
-var server = app.listen(app.get('port'), function() {
+var server = app.listen(app.get('port'), app.get('ipaddress'), function() {
 	console.log("Listening on port " + server.address().port);
 });
 
