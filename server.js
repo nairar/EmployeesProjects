@@ -134,43 +134,6 @@ var SampleApp = function() {
         self.initializeServer();
     };
 
-    self.app.all('*', function(req, res, next) {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header("Access-Control-Allow-Headers", "X-Requested-With");
-      next();
-     });
-
-    var alice = {first: "Alice", last: "Wonderland"};
-    var bob = {first: "Bob", last: "Marley"};
-    var charlie = {first: "Charlie", last: "Garcia"};
-    bob.projects = [{project: "Facebook"}];
-    var employees = [alice, bob, charlie];
-
-
-    self.app.get("/hello", function(req, res) {
-        res.send("Hello world!");
-    });
-
-
-    self.app.get("/employees", function(req, res) {
-        res.send(employees);
-
-    });
-
-
-    self.app.get("/employees/:index", function(req, res) {
-        var index = req.params.index;
-        res.send(employees[index]);
-    });
-
-    self.app.get("/employees/:index/projects", function(req, res) {
-        var index = req.params.index;
-        res.send(employees[index].projects);
-    });
-
-
-
-
 
     /**
      *  Start the server (starts up the sample application).
