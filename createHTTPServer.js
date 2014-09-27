@@ -41,7 +41,7 @@ app.get("/employees/:index/projects", function(req, res) {
 });
 
 
-var server = app.listen(app.get('port'), app.get('ipaddress'), function() {
+http.createServer(app).listen(app.get('port'), app.get('ipaddress'), function() {
 	console.log("Listening on port " + server.address().port);
 });
 
