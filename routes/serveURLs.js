@@ -7,7 +7,7 @@ var serveLogin = function (req, res) {
 
 var serveIndex = function (req, res) {
     console.log("Serving index!");
-    res.sendfile('/public/BasicEmployeeProject.html', {'root' : '/public'});
+    res.sendfile('./public/BasicEmployeeProject.html');
 }
 
 var serveIndexNumber = function (req, res) {
@@ -21,7 +21,7 @@ var serveEmployee = function (req, res) {
 }
 
 var serveEmployeePage = function (req, res) {
-    res.render('/public/Employees.html', { 'root': '/public' });
+    res.render('./public/Employees.html');
 }
 
 var serveEmployees = function (req, res) {
