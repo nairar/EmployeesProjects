@@ -24,6 +24,11 @@ var charlie = {first: "Charlie", last: "Garcia"};
 bob.projects = [{project: "Facebook"}];
 var employees = [alice, bob, charlie];
 
+app.get("/env", function (req, res) {
+    res.send(process.env);
+
+});
+
 app.get('/', router.serveIndex);
 
 app.get("/EmployeePage", router.serveEmployeePage);
