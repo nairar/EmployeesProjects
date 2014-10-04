@@ -10,6 +10,33 @@
 </head>
 <body ng-app>
     <div class="container" ng-controller="TableController">
+        <h2>Description</h2>
+        <p>
+            Used NodeJS to capture array data and present it in a Form table 
+            Have installed Node,MongoDB and Rockmongo cartridges for the same in Openshift and host the website
+            in the cloud.
+        </p>
+        <p>
+            I am trying to create routes in NodeJS to capture array data from static array created
+            in NodeJS server and show the response. Hit this <a href="http://employeesprojects-nairar.rhcloud.com/employees">page url</a>
+   to see the json formatted data that i have stored. also you can try checking the environment parameters
+   in the app() process by appending "/env" to the cloud url.</p>
+
+        <hr />
+
+        <h2>Purpose</h2>
+        <p>
+            The purpose of the experiment is to learn more about how NodeJS routes <b>GET</b> requests. I have made the code
+            very modular to ensure that errors in coding are minimized and that I have a separate routes folder
+            that services the various "GET" requests. I am storing a JSON array in the server and accessing it
+            using routed "GET" calls via NodeJS api's.
+        </p>
+        
+        <hr />
+
+        <h2>Implementation</h2>
+        <hr />
+
         <h1>Hello World application</h1>
         <h2>Employees1</h2>
         <table class="table">
@@ -55,6 +82,17 @@
         </table>
     </div>
     <script src="js/Week4/BasicEmployeeProject.js"></script>
+
+
+    <hr />
+
+    <h2>References</h2>
+    <p><a href="https://www.youtube.com/watch?v=QvSC2wHjyAY" target="_blank">Professor Jose's video examples</a></p>
+
+    <hr />
+
+    <h2>Source code</h2>
+    
 
 </body>
 </html>

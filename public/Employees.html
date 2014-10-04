@@ -9,6 +9,31 @@
 </head>
 <body ng-app>
     <div class="container" ng-controller="EmployeeController">
+        <h2>Description</h2>
+        <p>
+            Doing a <b>FIND/READ</b> operation using MongoJS in the cloud database.
+        </p>
+
+        <hr />
+
+        <h2>Purpose</h2>
+        <p>
+            I have used MongoJS's <b>find()</b> functionality to get data from the backend MongoDB database in my
+            Openshift application and display it in a table.
+        </p>
+        <p>
+            The purpose of this experiment was to check out how the Mongo operation works in conjunction with 
+            NodeJS routes and how to deliver <b>Static HTML pages</b> in the cloud using the <b><i>express.static</i></b>
+            command usage to mark static pages for rendering.
+        </p>
+        <p>
+            You just need to hit the <a href="http://employeesprojects-nairar.rhcloud.com/EmployeePage">page URL</a> and click on
+    <b>Get Details</b> button to get the data from the backend database
+    in Openshift.
+</p>
+        <hr />
+
+        <h2>Implementation</h2>
         <div>
             <table class="table">
                 <thead>
@@ -32,5 +57,15 @@
         </div>
     </div>
     <script src="js/Week4/Employees.js"></script>
+
+    <hr />
+
+    <h2>References</h2>
+    <p><a href="https://www.youtube.com/watch?v=QvSC2wHjyAY" target="_blank">Professor Jose's video class examples</a></p>
+
+    <hr />
+
+    <h2>Source code</h2>
+
 </body>
 </html>
