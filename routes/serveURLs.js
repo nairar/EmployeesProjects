@@ -21,7 +21,7 @@ var serveEmployee = function (req, res) {
 }
 
 var serveEmployeePage = function (req, res) {
-    res.sendFile('./public/Employees.html');
+    res.sendfile('./public/Employees.html');
 }
 
 
