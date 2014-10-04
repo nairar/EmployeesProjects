@@ -30,6 +30,11 @@ app.get("/EmployeePage", router.serveEmployeePage);
 
 app.get("/getEmployees", router.serveEmployees);
 
+app.get("/employees", function (req, res) {
+    res.send(employees);
+
+});
+
 app.get("/employees/:index", function(req, res) {
 	var index = req.params.index;
 	res.send(employees[index]);

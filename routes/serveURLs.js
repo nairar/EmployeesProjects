@@ -24,6 +24,7 @@ var serveEmployeePage = function (req, res) {
     res.render('./public/Employees.html');
 }
 
+
 var serveEmployees = function (req, res) {
     var employees = null;
     db.connection.Emp.find({}).toArray(function (err, docs) {
