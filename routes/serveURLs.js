@@ -28,14 +28,58 @@ var serveEmployeePage = function (req, res) {
 var serveEmployees = function (req, res) {
     
     db.connection.Emp.find({}).toArray(function (err, docs) {
-        if (err) { console.log(err); }
-        console.dir(docs);
+        if (err) { console.log(err); db.connection.close(); }
+        console.dir("Documents received " + docs);
+        if (docs) {
+            res.send({ employees: docs });        
+            return res.end();
+        }
+    });
+
+}
+
+var serveEditEmployees = function (req, res) {
+    res.sendfile('./public/EditEmployees.html')
+}
+
+var serveInsertEmployee = function (req, res) {
+    
+    var emp = req.body;
+    
+    db.connection.Emp.update({ '_id': db.ObjectId(emp._id) }, {
+        "name": emp.name, "empId":
+    emp.empId, "hobby": emp.hobby}, { upsert: true });
+
+    db.connection.Emp.find({}).toArray(function (err, docs) {
+        if (err) { console.log(err); db.connection.close(); }
+        console.dir("Documents received " + docs);
         if (docs) {
             res.send({ employees: docs });
             return res.end();
         }
     });
 
+
+}
+
+var serveDeleteEmployee = function (req, res) {
+    var empId = req.body._id;
+    db.connection.Emp.remove({ _id: db.ObjectId(empId) }, function (err, docs) {
+        if (err) {
+            db.connection.close(); return res.end();
+        }
+        console.log("Deleted and now searching ");
+        db.connection.Emp.find({}).toArray(function (err, docs) {
+            if (err) { console.log(err); db.connection.close(); }
+            console.dir("Documents received " + docs);
+            if (docs) {
+                res.send({ employees: docs });
+                return res.end();
+            }
+        });
+
+    });
+    
 }
 
 exports.serveLogin = serveLogin;
@@ -44,3 +88,6 @@ exports.serveIndexNumber = serveIndexNumber;
 exports.serveEmployee = serveEmployee;
 exports.serveEmployeePage = serveEmployeePage;
 exports.serveEmployees = serveEmployees;
+exports.serveEditEmployees = serveEditEmployees;
+exports.serveInsertEmployee = serveInsertEmployee;
+exports.serveDeleteEmployee = serveDeleteEmployee; 

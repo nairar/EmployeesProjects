@@ -1,12 +1,16 @@
 var http = require('http');
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 app.engine('.html', require('ejs').__express);
 app.set('view engine', 'html');
 
 var router = require('./routes/serveURLs');
 
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({
+extended: true}));
+app.use(bodyParser.json());
 
 app.set('ipaddress', process.env.OPENSHIFT_NODEJS_IP);
 
@@ -14,7 +18,7 @@ app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3050);
 
 app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Content-Type,X-Requested-With");
   next();
  });
 
@@ -39,6 +43,11 @@ app.get("/employees", function (req, res) {
     res.send(employees);
 
 });
+
+app.get("/editEmployees", router.serveEditEmployees);
+
+app.post("/insert", router.serveInsertEmployee);
+app.post("/delete", router.serveDeleteEmployee);
 
 app.get("/employees/:index", function(req, res) {
 	var index = req.params.index;

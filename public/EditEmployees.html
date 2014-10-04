@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Employees</title>
+    <script src="js/angular.min.js"></script>
+    <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="cssMain/MainStyle.css" />
+    <link rel="stylesheet" href="css/Week4/employee.css" />
+</head>
+<body ng-app>
+    <div class="container" ng-controller="EmployeeController">
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>EmployeeID</th>
+                        <th>Hobby</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input class="form-control ng-valid ng-dirty" ng-model="newEmployee.name" />
+                        </th>
+                        <th>
+                            <input class="form-control ng-valid ng-dirty" ng-model="newEmployee.empId" />
+                        </th>
+                        <th>
+                            <input class="form-control ng-valid ng-dirty" ng-model="newEmployee.hobby" />
+                        </th>
+                        <th>
+                            <button class="btn btn-success" ng-click="update(newEmployee)">Update</button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="employee in employees">
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.empId}}</td>
+                        <td>{{employee.hobby}}</td>
+                        <th>
+                            <button class="btn btn-primary" ng-click="edit(employee)">Edit</button>
+                            <button class="btn btn-danger" ng-click="delete(employee)">Delete</button>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <button class="btn btn-primary" ng-click="getEmployeeDetails()">Get Employee List</button>
+        </div>
+    </div>
+    <script src="js/Week4/EditEmployees.js"></script>
+</body>
+</html>
