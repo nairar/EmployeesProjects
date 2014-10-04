@@ -42,7 +42,7 @@ var serveEditEmployees = function (req, res) {
     res.sendfile('./public/EditEmployees.html')
 }
 
-var serveInsertEmployee = function (req, res) {
+var serveupdateEmployee = function (req, res) {
     
     var emp = req.body;
     
@@ -62,6 +62,19 @@ var serveInsertEmployee = function (req, res) {
 
 }
 
+var serveAddEmployee = function (req, res) {
+    db.connection.Emp.insert(req.body, function (req, res) {
+        if (err) {
+            console.log(err);
+            db.connection.close();
+        }
+        findAll(req, res);
+        
+    });
+
+    
+}
+
 var serveDeleteEmployee = function (req, res) {
     var empId = req.body._id;
     db.connection.Emp.remove({ _id: db.ObjectId(empId) }, function (err, docs) {
@@ -69,17 +82,20 @@ var serveDeleteEmployee = function (req, res) {
             db.connection.close(); return res.end();
         }
         console.log("Deleted and now searching ");
-        db.connection.Emp.find({}).toArray(function (err, docs) {
-            if (err) { console.log(err); db.connection.close(); }
-            console.dir("Documents received " + docs);
-            if (docs) {
-                res.send({ employees: docs });
-                return res.end();
-            }
-        });
-
+        findAll(req, res);
     });
     
+}
+
+var findAll = function (req, res) {
+    db.connection.Emp.find({}).toArray(function (err, docs) {
+        if (err) { console.log(err); db.connection.close(); }
+        console.dir("Documents received " + docs);
+        if (docs) {
+            res.send({ employees: docs });
+            return res.end();
+        }
+    });
 }
 
 exports.serveLogin = serveLogin;
@@ -90,4 +106,5 @@ exports.serveEmployeePage = serveEmployeePage;
 exports.serveEmployees = serveEmployees;
 exports.serveEditEmployees = serveEditEmployees;
 exports.serveInsertEmployee = serveInsertEmployee;
-exports.serveDeleteEmployee = serveDeleteEmployee; 
+exports.serveDeleteEmployee = serveDeleteEmployee;
+exports.serveAddEmployee = serveAddEmployee;
