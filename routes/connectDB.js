@@ -9,6 +9,6 @@ if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
     process.env.OPENSHIFT_APP_NAME;
 }
 
-var connection = mongo.connect('mongodb://'+dbUrl, ['Emp']);
+var connection = mongo(dbUrl, ['Emp']);
 
 exports.connection = connection;
