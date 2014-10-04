@@ -8,6 +8,10 @@ function TableController($scope, $http) {
         console.log(employee);
         if (employee.projects != undefined) {
             $scope.employee = employee;
+        } else {
+            $scope.employee.projects = [];
+            $scope.employee.projects.push(employee.projects);
+            $scope.apply();
         }
 
     }
