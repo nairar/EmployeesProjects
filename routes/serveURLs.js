@@ -105,6 +105,6 @@ exports.serveEmployee = serveEmployee;
 exports.serveEmployeePage = serveEmployeePage;
 exports.serveEmployees = serveEmployees;
 exports.serveEditEmployees = serveEditEmployees;
-exports.serveInsertEmployee = serveInsertEmployee;
+exports.serveUpdateEmployee = serveUpdateEmployee;
 exports.serveDeleteEmployee = serveDeleteEmployee;
 exports.serveAddEmployee = serveAddEmployee;
