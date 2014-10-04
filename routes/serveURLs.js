@@ -5,7 +5,7 @@ var serveLogin = function (req, res) {
 
 var serveIndex = function (req, res) {
 	console.log("Serving index!");
-	res.send('./public/BasicEmployeeProject.html');
+	res.sendfile('./public/BasicEmployeeProject.html');
 }
 
 var serveIndexNumber = function (req, res) {
