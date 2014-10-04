@@ -1,7 +1,7 @@
 var http = require('http');
 var express = require('express');
 var app = express();
-
+var router = require('./routes/serveURLs');
 
 app.use(express.static(__dirname + '/public'));
 
@@ -21,6 +21,7 @@ var charlie = {first: "Charlie", last: "Garcia"};
 bob.projects = [{project: "Facebook"}];
 var employees = [alice, bob, charlie];
 
+app.get('/', router.serveIndex);
 
 app.get("/hello", function(req, res) {
 	res.send("Hello world!");
