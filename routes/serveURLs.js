@@ -26,7 +26,7 @@ var serveEmployeePage = function (req, res) {
 
 
 var serveEmployees = function (req, res) {
-    var employees = null;
+    
     db.connection.Emp.find({}).toArray(function (err, docs) {
         console.dir(docs);
         if (docs) {
