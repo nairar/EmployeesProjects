@@ -1,6 +1,9 @@
 var http = require('http');
 var express = require('express');
 var app = express();
+app.engine('.html', require('ejs').__express);
+app.set('view engine', 'html');
+
 var router = require('./routes/serveURLs');
 
 app.use(express.static(__dirname + '/public'));
@@ -23,16 +26,9 @@ var employees = [alice, bob, charlie];
 
 app.get('/', router.serveIndex);
 
-app.get("/hello", function(req, res) {
-	res.send("Hello world!");
-});
+app.get("/EmployeePage", router.serveEmployeePage);
 
-
-app.get("/employees", function(req, res) {
-	res.send(employees);
-
-});
-
+app.get("/getEmployees", router.serveEmployees);
 
 app.get("/employees/:index", function(req, res) {
 	var index = req.params.index;
