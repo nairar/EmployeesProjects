@@ -11,6 +11,7 @@ function TableController($scope, $http) {
         } else {
             $scope.employee.projects = [];
             $scope.employee.projects.push(employee.projects);
+            $scope.apply();
         }
 
     }
@@ -23,9 +24,11 @@ function TableController($scope, $http) {
 
             if ($scope.employees[index].projects != undefined) {
                 $scope.employees[index].projects.push(project);
+                $scope.apply();
             } else {
                 $scope.employees[index].projects = [];
                 $scope.employees[index].projects.push(project);
+                $scope.apply();
             }
         }
     }
@@ -34,6 +37,7 @@ function TableController($scope, $http) {
         for (var i = 0; i < $scope.employees.length; i++) {
             if ($scope.employees[i].first == employee.first) {
                 $scope.employees[i].projects.splice(index, 1);
+                $scope.apply();
             }
         }
     }
