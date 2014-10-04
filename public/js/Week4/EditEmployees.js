@@ -39,7 +39,7 @@
     }
 
     $scope.add = function (newEmployee) {
-        $http.post(urlAdd, employee).success(function (res, err) {
+        $http.post(urlAdd, newEmployee).success(function (res, err) {
             if (err) console.log("Error is " + err);
             $scope.employees = res.employees;
             console.log($scope.employees);
