@@ -63,7 +63,7 @@ var serveUpdateEmployee = function (req, res) {
 }
 
 var serveAddEmployee = function (req, res) {
-    db.connection.Emp.insert(req.body, function (req, res) {
+    db.connection.Emp.insert(req.body, function (err, docs) {
         if (err) {
             console.log(err);
             db.connection.close();
