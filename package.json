@@ -33,7 +33,8 @@
   "private": true,
   
   "scripts": {
-    "start": "node createHTTPServer.js"
+    "start": "node createHTTPServer.js",
+    "startNodeBasics" : "node NodeBasics.js"
   },
 
   "main": "createHTTPServer.js"

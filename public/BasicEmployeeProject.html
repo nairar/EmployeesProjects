@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hello World First NodeJS App</title>
+    <script src="../../js/angular.min.js"></script>
+    <link rel="stylesheet" href="../../bootstrap-3.2.0-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../cssMain/MainStyle.css" />
+    <link rel="stylesheet" href="css/employee.css" />
+
+</head>
+<body ng-app>
+    <div class="container" ng-controller="TableController">
+        <h1>Hello World application</h1>
+        <h2>Employees</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <input class="form-control" ng-model="newProject" placeholder="Enter Project Name here and click Add Project" />
+                    </th>
+                </tr>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees">
+                    <td>{{employee.first}}</td>
+                    <td>{{employee.last}}</td>
+                    <th>
+                        <button class="btn btn-primary btn-sm" ng-click="getProjects(employee)">Projects</button>
+                        <button class="btn btn-primary btn-sm" ng-click="addProject($index)">Add Project</button>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Projects of employee selected</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Project Name</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="project in employee.projects">
+                    <td>{{project.project}}</td>
+                    <th>
+                        <button class="btn btn-primary btn-sm" ng-click="removeProject(employee, $index)">Remove Project</button>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function TableController($scope, $http) {
+            $http.get('http://employeesprojects-nairar.rhcloud.com/employees').success(function (res, err) {
+                $scope.employees = res;
+            });
+
+            $scope.getProjects = function (employee) {
+                console.log(employee);
+                if (employee.projects != undefined) {
+                    $scope.employee = employee;
+                } else {
+                    $scope.employee.projects = [];
+                    $scope.employee.projects.push(employee.projects);
+                }
+
+            }
+
+            $scope.addProject = function (index) {
+                if ($scope.newProject != null) {
+                    var project = {
+                        project: $scope.newProject
+                    };
+
+                    if ($scope.employees[index].projects != undefined) {
+                        $scope.employees[index].projects.push(project);
+                    } else {
+                        $scope.employees[index].projects = [];
+                        $scope.employees[index].projects.push(project);
+                    }
+                }
+            }
+
+            $scope.removeProject = function (employee, index) {
+                for (var i = 0; i < $scope.employees.length; i++) {
+                    if ($scope.employees[i].first == employee.first) {
+                        $scope.employees[i].projects.splice(index, 1);
+                    }
+                }
+            }
+
+        };
+    </script>
+</body>
+</html>

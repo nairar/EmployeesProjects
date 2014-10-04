@@ -2,9 +2,12 @@ var http = require('http');
 var express = require('express');
 var app = express();
 
+
+app.use(express.static(__dirname + '/public'));
+
 app.set('ipaddress', process.env.OPENSHIFT_NODEJS_IP);
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3040);
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3050);
 
 app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
