@@ -1,0 +1,14 @@
+﻿html {
+    height: 100%;
+    background: radial-gradient(#9b9797,#ded8d8) no-repeat;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+body {
+    background: radial-gradient(#9b9797,#ded8d8) no-repeat;
+    background-size: 100%;
+    padding-top: 50px;
+    padding-bottom: 5px;
+    background-repeat: no-repeat;
+}
