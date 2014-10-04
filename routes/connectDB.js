@@ -5,6 +5,6 @@ var db_url = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
     process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
     process.env.OPENSHIFT_APP_NAME;
 
-var connection = mongo(dbUrl, ['Emp']);
+var connection = mongo(db_url, ['Emp']);
 
 exports.connection = connection;
