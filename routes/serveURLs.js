@@ -28,6 +28,7 @@ var serveEmployeePage = function (req, res) {
 var serveEmployees = function (req, res) {
     
     db.connection.Emp.find({}).toArray(function (err, docs) {
+        if (err) { console.log(err); }
         console.dir(docs);
         if (docs) {
             res.send({ employees: docs });
