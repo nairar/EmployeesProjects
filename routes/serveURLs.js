@@ -42,7 +42,7 @@ var serveEditEmployees = function (req, res) {
     res.sendfile('./public/EditEmployees.html')
 }
 
-var serveupdateEmployee = function (req, res) {
+var serveUpdateEmployee = function (req, res) {
     
     var emp = req.body;
     

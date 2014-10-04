@@ -45,9 +45,8 @@ app.get("/employees", function (req, res) {
 });
 
 app.get("/editEmployees", router.serveEditEmployees);
-app.post("/update", router.serveInsertEmployee);
+app.post("/update", router.serveUpdateEmployee);
 app.post("/add", router.serveAddEmployee);
-
 app.post("/delete", router.serveDeleteEmployee);
 
 app.get("/employees/:index", function(req, res) {
