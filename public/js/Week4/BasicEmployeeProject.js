@@ -1,6 +1,7 @@
 ﻿
 function TableController($scope, $http) {
     $http.get('http://employeesprojects-nairar.rhcloud.com/employees').success(function (res, err) {
+        
         $scope.employees = res;
     });
 
