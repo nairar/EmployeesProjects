@@ -44,26 +44,29 @@ var serveEditEmployees = function (req, res) {
 
 var serveUpdateEmployee = function (req, res) {
     
-    var emp = req.body;
-    
-    db.connection.Emp.update({ '_id': db.ObjectId(emp._id) }, {
-        "name": emp.name, "empId":
-    emp.empId, "hobby": emp.hobby}, { upsert: true });
+    console.log(JSON.stringify(req.body._id));
+    db.connection.Emp.update({_id: db.ObjectId(req.body._id)}, {"name": req.body.name, "empId": req.body.empId, "hobby": 
+req.body.hobby}, function(err, docs) {
+        console.log("After  update: " + docs);
+        findAll(req, res);
+    });
 
-    db.connection.Emp.find({}).toArray(function (err, docs) {
+    /*db.connection.Emp.find({}).toArray(function (err, docs) {
         if (err) { console.log(err); db.connection.close(); }
         console.dir("Documents received " + docs);
         if (docs) {
             res.send({ employees: docs });
             return res.end();
         }
-    });
+    });*/
 
 
 }
 
 var serveAddEmployee = function (req, res) {
-    db.connection.Emp.insert(req.body, function (err, docs) {
+    var emp = req.body;
+    console.log("New employee adding: " + JSON.stringify(emp));
+    db.connection.Emp.save(req.body, function (err, docs) {
         if (err) {
             console.log(err);
             db.connection.close();

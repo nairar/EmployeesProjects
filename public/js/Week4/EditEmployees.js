@@ -7,7 +7,7 @@
     var urlDelete = '/delete';
     
     $scope.getEmployeeDetails = function () {
-        $http.get(urlCloud).success(function (res, err) {
+        $http.get(urlLocal).success(function (res, err) {
             if (err) console.log("Error is " + err);
             $scope.employees = res.employees;
             console.log($scope.employees);
@@ -21,9 +21,9 @@
     }
 
     $scope.update = function (newEmployee) {
-        console.log(JSON.stringify(newEmployee));
+        console.log("Before  update " + JSON.stringify(newEmployee));
      
-        $http.post(urlUpdate, $scope.newEmployee).success(function (res, err) {
+        $http.post(urlUpdate, newEmployee).success(function (res, err) {
             if (err) console.log("Error is " + err);
             $scope.employees = res.employees;
             console.log($scope.employees);
@@ -39,6 +39,7 @@
     }
 
     $scope.add = function (newEmployee) {
+        console.log(newEmployee.name);
         $http.post(urlAdd, newEmployee).success(function (res, err) {
             if (err) console.log("Error is " + err);
             $scope.employees = res.employees;
