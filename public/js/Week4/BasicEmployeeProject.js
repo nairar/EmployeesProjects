@@ -10,9 +10,8 @@ function TableController($scope, $http) {
         if (employee.projects != undefined) {
             $scope.employee = employee;
         } else {
-            $scope.employee.projects = [];
-            $scope.employee.projects.push(employee.projects);
-            $scope.apply();
+            employee.projects = null;
+            $scope.employee = employee;
         }
 
     }
@@ -34,9 +33,11 @@ function TableController($scope, $http) {
         }
     }
 
-    $scope.removeProject = function (employee) {
-        var index = $scope.employees.indexOf(employee);
-        $scope.employees.splice(index, 1);
+    $scope.removeProject = function (employee, index) {
+        
+        employee.projects.splice(index, 1);
+        $scope.apply();
+        
         
     }
 
