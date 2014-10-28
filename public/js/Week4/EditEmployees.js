@@ -7,7 +7,7 @@
     var urlDelete = '/delete';
     
     $scope.getEmployeeDetails = function () {
-        $http.get(urlLocal).success(function (res, err) {
+        $http.get(urlCloud).success(function (res, err) {
             if (err) console.log("Error is " + err);
             $scope.employees = res.employees;
             console.log($scope.employees);
