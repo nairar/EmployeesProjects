@@ -34,13 +34,10 @@ function TableController($scope, $http) {
         }
     }
 
-    $scope.removeProject = function (employee, index) {
-        for (var i = 0; i < $scope.employees.length; i++) {
-            if ($scope.employees[i].first == employee.first) {
-                $scope.employees[i].projects.splice(index, 1);
-                $scope.apply();
-            }
-        }
+    $scope.removeProject = function (employee) {
+        var index = $scope.employees.indexOf(employee);
+        $scope.employees.splice(index, 1);
+        
     }
 
 };
