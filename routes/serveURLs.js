@@ -47,7 +47,7 @@ var serveUpdateEmployee = function (req, res) {
     console.log(JSON.stringify(req.body._id));
     db.connection.Emp.update({_id: db.ObjectId(req.body._id)}, {"name": req.body.name, "empId": req.body.empId, "hobby": 
 req.body.hobby}, function(err, docs) {
-        console.log("After  update: " + docs);
+        console.log("After  update: " + JSON.stringify(docs));
         findAll(req, res);
     });
 
